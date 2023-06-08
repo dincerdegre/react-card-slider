@@ -1,0 +1,97 @@
+.multiSlider {
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+.top {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+.top h2 {
+  font-size: 5rem;
+  background-color: #EF233C;
+  color: white;
+  display: inline-block;
+  margin:0;
+  padding:1rem;
+}
+.middle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.2rem;
+}
+.iconGroup {
+  display: flex;
+  align-items: flex-start;
+}
+.icon {
+  cursor: pointer;
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+.icon svg {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 5px;
+  border-radius: 30%;
+  color: #2b2d42;
+  background-color: #8d99ae;
+}
+.icon:hover svg {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 5px;
+  border-radius: 30%;
+  color: #8d99ae;
+  background-color: #2b2d42;
+}
+.multiSlider .bottom {
+  width: 100%;
+}
+.sliderContainer {
+  width: 1260px;
+  padding: 10px 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.sliderWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 8000px;
+  transition: all 200ms ease 0s;
+  animation-direction: normal;
+}
+.sliderItem {
+  text-align: center;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1279px) and (min-width: 1140px) {
+  .sliderContainer {
+    width: 1140px;
+  }
+}
+@media only screen and (max-width: 1139px) and (min-width: 1024px) {
+  .sliderContainer {
+    width: 1024px;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .sliderContainer {
+    width: 768px;
+  }
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+  .sliderContainer {
+    width: 480px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .sliderContainer {
+    width: 100%;
+  }
+}

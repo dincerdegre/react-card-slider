@@ -4,40 +4,60 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import styles from "./MultiSlider.module.css";
 import SliderCard from "../UI/SliderCard/SliderCard";
 
-const MultiSlider = ({ data }) => {
+const MultiSlider = ({ data , group = 1}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [width, setWidth] = useState(1260);
+  const [width, setWidth] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(4);
 
   const nextSlideHandler = () => {
-    setCurrentSlide(
-      currentSlide === data.length - slidesToShow ? 0 : (prev) => prev + 1,
-    );
+    if (group) {
+      setCurrentSlide(
+        currentSlide >= data.length / slidesToShow - 1 ? 0 : (prev) => prev + 1,
+      );
+    } else {
+      setCurrentSlide(
+        currentSlide === data.length - slidesToShow ? 0 : (prev) => prev + 1,
+      );
+    }
+    
   };
   const prevSlideHandler = () => {
-    setCurrentSlide(
-      currentSlide === 0 ? data.length - slidesToShow : (prev) => prev - 1,
-    );
+    if (group) {
+      setCurrentSlide(
+        currentSlide === 0 ? Math.ceil(data.length / slidesToShow) - 1: (prev) => prev - 1,
+      );
+    } else {
+      setCurrentSlide(
+        currentSlide === 0 ? data.length - slidesToShow : (prev) => prev - 1,
+      );
+    }
+    
   };
   const handleResize = useCallback(() => {
     if (window.innerWidth >= 1260) {
       setWidth(1260);
       setSlidesToShow(4);
+      setCurrentSlide(0);
     } else if (window.innerWidth < 1260 && window.innerWidth >= 1140) {
       setWidth(1140);
       setSlidesToShow(4);
+      setCurrentSlide(0);
     } else if (window.innerWidth < 1140 && window.innerWidth >= 1024) {
       setWidth(1024);
       setSlidesToShow(4);
+      setCurrentSlide(0);
     } else if (window.innerWidth < 1024 && window.innerWidth >= 768) {
       setWidth(768);
       setSlidesToShow(2);
+      setCurrentSlide(0);
     } else if (window.innerWidth < 768 && window.innerWidth >= 480) {
       setWidth(480);
       setSlidesToShow(1);
+      setCurrentSlide(0);
     } else if (window.innerWidth < 480) {
       setWidth(window.innerWidth);
       setSlidesToShow(1);
+      setCurrentSlide(0);
     }
   }, []);
 
@@ -51,6 +71,11 @@ const MultiSlider = ({ data }) => {
   useEffect(() => {
     handleResize();
   }, [handleResize]);
+
+  let sliderTransform = width / slidesToShow;
+  if (group) {
+    sliderTransform = width;
+  }
 
   return (
     <div className={styles.multiSlider}>
@@ -66,12 +91,12 @@ const MultiSlider = ({ data }) => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.sliderContainer}>
+        {width && (<div className={styles.sliderContainer}>
           <div
             className={styles.sliderWrapper}
             style={{
               transform: `translate3d(-${
-                currentSlide * (width / slidesToShow)
+                currentSlide * (sliderTransform)
               }px,0px,0px)`,
             }}
           >
@@ -85,7 +110,7 @@ const MultiSlider = ({ data }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div>) }
       </div>
     </div>
   );

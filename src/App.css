@@ -1,7 +1,29 @@
 .row {
-  margin:0 auto;
-  margin-top:4rem;
+  margin:3rem auto;
   width:1260px;
+}
+.top {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.top h2 {
+  font-size: 5rem;
+  background-color: #EF233C;
+  color: white;
+  display: inline-block;
+  margin:0 0 1rem;
+  padding:1rem;
+}
+.subHeading {
+  padding:3rem 0 1rem;
+  margin-top:2rem;
+  font-size:2rem;
+  text-align: center;
+  text-transform: uppercase;
+  color:#2b2d42;
+  border-top: 1px solid;
+  border-image: linear-gradient(to right, #F7F9FA, #e0e0e0, #e0e0e0, #F7F9FA) 1 1;
 }
 @media only screen and (max-width: 1279px) and (min-width: 1140px) {
   .row {

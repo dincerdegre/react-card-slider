@@ -4,7 +4,7 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import styles from "./MultiSlider.module.css";
 import SliderCard from "../UI/SliderCard/SliderCard";
 
-const MultiSlider = ({ data , group = 1}) => {
+const MultiSlider = ({ data , group = 0}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [width, setWidth] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(4);
@@ -79,8 +79,7 @@ const MultiSlider = ({ data , group = 1}) => {
 
   return (
     <div className={styles.multiSlider}>
-      <div className={styles.top} ><h2>Card Slider</h2></div>
-      <div className={styles.middle}>
+      <div className={styles.top}>
         <div className={styles.iconGroup}>
           <div className={styles.icon} onClick={prevSlideHandler}>
             <ArrowBackIosNewRoundedIcon />
